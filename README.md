@@ -8,7 +8,7 @@ for links to rendered versions of the poster and slides.
 
 ## Poster
 
-![Poster preview](img/preview.png)
+![Poster preview](poster/img/preview.png)
 
 Use `latexmk -pdf poster.tex` to generate the PDF. Or alternatively,
 use `latexmk -pdf -pvc cv.tex` to preview and automatically re-compile when
@@ -16,7 +16,7 @@ saving changes.
 
 ## Slides
 
-![Slides preview](img/preview.png)
+![Slides preview](slides/img/preview.png)
 
 Before compiling the slides follow the instructions to install
 the [Metropolis][mtheme] theme. Optionally, you may want to install the Fira
