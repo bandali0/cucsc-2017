@@ -1,0 +1,381 @@
+%% This presentation (c) by Amin Bandali
+
+%% This presentation is licensed under a
+%% Creative Commons Attribution-ShareAlike 4.0 International License.
+
+%% You should have received a copy of the license along with this
+%% work. If not, see <http://creativecommons.org/licenses/by-sa/4.0/>.
+
+\documentclass[10pt]{beamer}
+
+\usetheme{metropolis}
+
+\usepackage{appendixnumberbeamer}
+\usepackage[scale=2]{ccicons}
+\usepackage{booktabs}
+\usepackage{xspace}
+\usepackage{multicol}
+\usepackage{ulem}
+
+%% Uncomment to restore \emph back to normal (instead of underlined)
+%% \normalem
+
+%% Type set covered text in a ``transparent'' way
+\setbeamercovered{transparent}
+
+% Uncomment to thicken the font
+%% \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
+
+% Uncomment to use Computer Modern fonts instead of Fira
+\usepackage{lmodern}
+
+\newcommand{\unitb}{Unit-B\xspace}
+\newcommand{\eventb}{Event-B\xspace}
+\newcommand{\tla}{TLA${}^+$\xspace}
+
+\title{The Magic of Specifications and Type Systems}
+\date{\footnotesize August 18, 2016}
+\author{\normalsize Amin Bandali}
+\institute{
+  Software Engineering Lab, EECS\\
+  York University
+}
+\titlegraphic{\hfill
+  \includegraphics[height=1.5cm]{img/Lassonde_York_V_5C_fit}}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Outline}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+
+\section{Introduction}
+
+\begin{frame}[fragile]{Specifications}
+  \begin{quote}
+    \vspace{.4cm}
+    {\normalfont \small Architects draw detailed plans before a brick
+      is laid or a nail is hammered. Programmers and software
+      engineers don't.}\vspace{.3cm}
+    \pause
+
+    Can this be why houses seldom collapse and programs often
+    crash?\newline
+    \pause
+
+    To designers of complex systems, the need for \textbf{formal
+      specifications} should be as obvious as the need for blueprints
+    of a skyscraper.\newline
+    \pause
+
+    But few software developers write specifications because they
+    have little time to learn how on the job, and they are unlikely to
+    have learned in school.\newline
+    \pause
+
+    \hfill \textrm{--- Leslie Lamport, Turing Award Winner, 2013}
+  \end{quote}
+
+\end{frame}
+
+\begin{frame}[fragile]{Gaining Traction}
+  Formal methods used to be relegated to safety critical systems:
+  \begin{itemize}
+    \item nuclear plants
+    \item avionics
+    \item medical devices
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Gaining Traction}
+  Some formal methods are now practical and adopted by technology leaders:
+  \begin{itemize}
+  \item Amazon
+  \item Microsoft
+  \item Facebook
+  \item Dropbox
+  \end{itemize}
+\end{frame}
+
+
+\section{Significance \& Contributions}
+
+\begin{frame}[fragile]{\unitb}
+  \textbf{\unitb}~\cite{SoSyM/Hudon/Hoang/Ostroff15} is a new
+  framework for specifying and modelling systems that must satisfy
+  both \emph{safety} and \emph{liveness} properties.
+\end{frame}
+
+\begin{frame}[fragile]{\unitb\ --- Logic}
+  \setbeamertemplate{itemize/enumerate body begin}{\small}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.5\textwidth}
+      \begin{block}{\unitb vs \eventb~\cite{DBLP:books/daglib/0024570}}
+        \begin{itemize}
+          \item record types
+          \item complete well-definedness
+      \end{itemize}
+      \end{block}
+      \pause
+
+    \column{0.5\textwidth}
+
+      \begin{block}{\unitb vs \tla~\cite{DBLP:books/aw/Lamport2002}}
+        \begin{itemize}
+          \item type checking
+          \item well-definedness checking
+          \item quantification over infinite sets\footnotemark
+        \end{itemize}
+      \end{block}
+  \end{columns}
+  \only<2>{\footnotetext[1]{limitation of the TLC tooling}}
+\end{frame}
+
+\begin{frame}[fragile]{\unitb Web}
+  \textbf{\unitb Web} makes the Literate \unitb prover available on
+  the web.\newline \pause
+
+  Literate Unit-B supports the Unit-B logic and Unit-B [computation]
+  models, whereas currently Unit-B Web only supports the Unit-B logic.
+\end{frame}
+
+\begin{frame}[fragile]{\unitb Web}
+  %% \metroset{block=fill}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.49\textwidth}
+      \begin{block}{Teaching}
+        \begin{itemize}
+        \item demonstrations
+        \item online evaluations
+        \item support for assignments
+        \end{itemize}
+      \end{block}
+      \pause
+
+    \column{0.51\textwidth}
+      \begin{block}{Online Proof Environment}
+        \begin{itemize}
+        \item making specifications more accessible to \textbf{casual}
+          users
+        \item proof of concept for a \textbf{web IDE} for full
+          modelling capabilities of \unitb
+        \end{itemize}
+      \end{block}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[fragile]{Technology Stack}
+  %% \metroset{block=fill}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.5\textwidth}
+      \begin{block}{Syntax}
+        \begin{itemize}
+        \item \textrm{\LaTeX}-based
+        \end{itemize}
+      \end{block}
+      \pause
+      \begin{block}{Web}
+        \begin{itemize}
+        \item JavaScript
+        \item JSON
+        \item Yesod / Haskell
+        \end{itemize}
+      \end{block}
+      \pause
+
+    \column{0.5\textwidth}
+      \begin{block}{Prover}
+        Haskell
+        \begin{itemize}
+        \item Type checking
+        \item Well-definedness
+        \item Proof tactics
+        \end{itemize}
+        Z3
+        \begin{itemize}
+        \item Predicate prover
+        \end{itemize}
+      \end{block}
+  \end{columns}
+\end{frame}
+
+
+\section{Type Checking}
+
+\begin{frame}<1-3>[fragile,label=typecheckingframe]{Type Checking}
+  \begin{itemize}
+  \item <1-> $\{x\}+3 \le 7$
+  \item <2-> not meaningful
+  \item <3-> caught by \unitb's type checker
+  \item <4-> \tla\ doesn't recognize this as an error
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/unitb_typechecking.png}
+    \caption{A type error --- $x$ is expected to be a set of
+      numbers}\label{fig:typechecking}
+  \end{figure}
+\end{frame}
+
+\againframe<3->{typecheckingframe}
+
+\begin{frame}[fragile]{Challenges}
+  \begin{itemize}[<+->]
+  \item \tla's untyped logic allows $\{3, \{7\}\}$
+  \item \eventb's simple type system forbids this
+  \item \alt<4->{\sout{???}}{???}
+  \item \alert{subtyping} to the rescue!
+  \item type variables $\rightarrow$ polymorphic definitions
+  \end{itemize}
+\end{frame}
+
+
+\section{Well-definedness Checking}
+
+\begin{frame}[fragile]{Well-definedness Checking}
+  Catches meaningless formulas that type checker can't catch
+  \begin{itemize}
+  \item <2-> division by zero
+  \item <3-> array index out of bounds
+  \item <4-> more sophisticated errors
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/unitb_wd.png}
+    \caption{An ill-defined predicate --- $x$ is not in
+                  the domain of $f$}\label{fig:wd}
+  \end{figure}
+\end{frame}
+
+
+\section{Conclusion}
+
+\begin{frame}{Summary}
+
+  \begin{itemize}[<+->]
+  \item \textbf{\unitb Web} brings the Literate Unit-B prover to the web
+  \item \textbf{Type Checking} helps identify a certain class of
+    meaningless formulas (i.e. type-incorrect formulas) efficiently
+  \item \textbf{Well-definedness Checking} catches the rest of
+    meaningless formulas that are not type errors
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[standout]
+  Thanks!
+\end{frame}
+
+\appendix
+
+\begin{frame}[fragile]{Presentation}
+  The source code of this presentation is available at
+
+  \begin{center}
+    \href{https://github.com/aminb/eecs4080}{\url{github.com/aminb/eecs4080}}
+  \end{center}
+
+  licensed under a
+  \href{http://creativecommons.org/licenses/by-sa/4.0/}{Creative Commons
+  Attribution-ShareAlike 4.0 International License}.
+
+  \begin{center}\ccbysa\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Polymorphic Definitions}
+  \metroset{block=fill}
+  \begin{block}{SameFields}
+  \begin{align*}
+    \mathnormal{SameFields(fs, r0, r1)} & \triangleq \\
+    \mathnormal{(\forall x: x \in fs:\ }
+    & \mathnormal{(x \in dom.r0 \wedge x \in dom.r1 \wedge r0.x =
+      r1.x)}\\
+    \mathnormal{\vee} & \mathnormal{(\neg x \in dom.r0 \wedge \neg x
+      \in dom.r1))}
+  \end{align*}
+  \end{block}
+  \pause
+
+  \begin{itemize}[<+->]
+  \item Given a set of strings ($\mathnormal{fs}$) and two records
+    ($\mathnormal{r0, r1}$), checks that all the specified fields have
+    same value in both records.
+  \item Works on any pair of records represented as partial functions.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Completeness}
+  \unitb's WD-calculus~\cite{DBLP:conf/cade/DarvasMR08} is complete;
+  while \eventb's isn't.
+  \pause
+
+  \vspace{0.5cm}
+  Consider four propositions $A$, $B$, $C$, and $D$, where
+
+  \vspace{-3ex}
+  \begin{eqnarray*}
+    A \Rightarrow WD(B) \\
+    B \Rightarrow WD(C) \\
+    B \Rightarrow WD(D)
+  \end{eqnarray*}
+\end{frame}
+
+\begin{frame}{Completeness}
+  \begin{multicols}{2}
+    \uncover<2->{The following calculation is not well-defined in
+      \eventb, but it is perfectly so in \unitb:}
+
+    \columnbreak
+    \begin{eqnarray*}
+      \\[-8ex]
+      A \Rightarrow WD(B) \\
+      B \Rightarrow WD(C) \\
+      B \Rightarrow WD(D)
+    \end{eqnarray*}
+  \end{multicols}
+
+  \uncover<3->{
+    \vspace{-2ex}
+    \begin{multicols}{2}
+      \begin{align*}
+        & A \wedge B \wedge (C \vee D) \\
+        = \ & \{ \textit{associativity} \} \\
+        & {\color{red} A \wedge (C \vee D) \wedge B} \\
+        = \ & \{ \textit{distributivity} \} \\
+        & ( (A \wedge C) \vee (A \wedge D) ) \wedge B
+      \end{align*}
+      \columnbreak\
+      \begin{align*}
+        \\[0.5ex]
+        & \text{where} \\
+        \\[-3.5ex]
+        & \begin{array}{ll}
+            A :& x \in dom.f \\
+            B :& f.x \in dom.g \\
+            C :& g.(f.x) \le 3  \\
+            D :& 7 \le g.(f.x)
+          \end{array}
+      \end{align*}
+    \end{multicols}
+  }
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+  \normalem
+  \bibliography{bib}
+  \bibliographystyle{plain}
+\end{frame}
+
+\end{document}
