@@ -3,20 +3,19 @@
 This repository contains the source code of the poster and slides of my
 presentation for EECS 4080, the Computer Science Project course.
 
-See [Magic of Specifications and Type Systems][mosats] for more information and
-for links to rendered versions of the poster and slides. 
+See [Magic of Specifications and Type Systems][mosats] for more information. 
 
-## Poster
+## [Poster][poster]
 
-![Poster preview](poster/img/preview.png)
+[![Poster preview](poster/img/preview.png)][poster]
 
 Use `latexmk -pdf poster.tex` to generate the PDF. Or alternatively,
 use `latexmk -pdf -pvc cv.tex` to preview and automatically re-compile when
 saving changes.
 
-## Slides
+## [Slides][slides]
 
-![Slides preview](slides/img/preview.png)
+[![Slides preview](slides/img/preview.png)][slides]
 
 Before compiling the slides follow the instructions to install
 the [Metropolis][mtheme] theme. Optionally, you may want to install the Fira
@@ -34,3 +33,5 @@ a [Creative Commons Attribution-ShareAlike 4.0 International License][cc].
 [mosats]: https://aminb.org/talks/magic-of-specifications-and-type-systems
 [mtheme]: https://github.com/matze/mtheme
 [cc]: http://creativecommons.org/licenses/by-sa/4.0/
+[poster]: https://static.aminb.org/eecs4080-poster.pdf
+[slides]: https://static.aminb.org/eecs4080-slides.pdf
