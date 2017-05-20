@@ -9,6 +9,7 @@
 \documentclass[10pt]{beamer}
 
 \usetheme{metropolis}
+%% \usecolortheme{metropolis-highcontrast}
 
 \usepackage{appendixnumberbeamer}
 \usepackage[scale=2]{ccicons}
@@ -27,14 +28,16 @@
 %% \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
 
 % Uncomment to use Computer Modern fonts instead of Fira
-\usepackage{lmodern}
+%% \usepackage{lmodern}
+
+\setsansfont{Lato}
 
 \newcommand{\unitb}{Unit-B\xspace}
 \newcommand{\eventb}{Event-B\xspace}
 \newcommand{\tla}{TLA${}^+$\xspace}
 
 \title{The Magic of Specifications and Type Systems}
-\date{\footnotesize August 18, 2016}
+\date{\footnotesize June 2017}
 \author{\normalsize Amin Bandali}
 \institute{
   Software Engineering Lab, EECS\\
@@ -59,7 +62,8 @@
 \begin{frame}[fragile]{Specifications}
   \begin{quote}
     \vspace{.4cm}
-    {\normalfont \small Architects draw detailed plans before a brick
+    \small
+    {\normalfont Architects draw detailed plans before a brick
       is laid or a nail is hammered. Programmers and software
       engineers don't.}\vspace{.3cm}
     \pause
@@ -78,7 +82,7 @@
     have learned in school.\newline
     \pause
 
-    \hfill \textrm{--- Leslie Lamport, Turing Award Winner, 2013}
+    \hfill \textit{--- Leslie Lamport, Turing Award Winner, 2013}
   \end{quote}
 
 \end{frame}
@@ -128,7 +132,7 @@
       \begin{block}{\unitb vs \tla~\cite{DBLP:books/aw/Lamport2002}}
         \begin{itemize}
           \item type checking
-          \item well-definedness checking
+          \item {[static]} well-definedness checking
           \item quantification over infinite sets\footnotemark
         \end{itemize}
       \end{block}
@@ -284,7 +288,7 @@
   The source code of this presentation is available at
 
   \begin{center}
-    \href{https://github.com/aminb/eecs4080}{\url{github.com/aminb/eecs4080}}
+    \href{https://github.com/aminb/cucsc-2017}{\url{github.com/aminb/cucsc-2017}}
   \end{center}
 
   licensed under a
