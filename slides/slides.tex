@@ -235,12 +235,12 @@
 
 \againframe<3->{typecheckingframe}
 
-\begin{frame}[fragile]{Challenges}
+\begin{frame}[fragile]{Challenges \& Rewards}
   \begin{itemize}[<+->]
   \item \tla's untyped logic allows $\{3, \{7\}\}$
   \item \eventb's simple type system forbids this
   \item \alt<4->{\sout{???}}{???}
-  \item \alert{subtyping} to the rescue!
+  \item \alert{\large subtyping} to the rescue!
   \item type variables $\rightarrow$ polymorphic definitions
   \end{itemize}
 \end{frame}
@@ -249,7 +249,7 @@
 \section{Well-definedness Checking}
 
 \begin{frame}[fragile]{Well-definedness Checking}
-  Catches meaningless formulas that type checker can't catch
+  Catches meaningless formulas that type checker can't catch:
   \begin{itemize}
   \item <2-> division by zero
   \item <3-> array index out of bounds
@@ -272,17 +272,17 @@
 \begin{frame}{Summary}
 
   \begin{itemize}[<+->]
-  \item \textbf{\unitb Web} brings the Literate Unit-B prover to the web
+  \item \textbf{\unitb Web} brings the Literate Unit-B prover to the web.
   \item \textbf{Type Checking} helps identify a certain class of
-    meaningless formulas (i.e. type-incorrect formulas) efficiently
+    meaningless formulas (i.e. type-incorrect formulas) efficiently.
   \item \textbf{Well-definedness Checking} catches the rest of
-    meaningless formulas that are not type errors
+    meaningless formulas that are not type errors.
   \end{itemize}
 
 \end{frame}
 
 \begin{frame}[standout]
-  Thanks!
+  \LARGE Thanks!
 \end{frame}
 
 \appendix
