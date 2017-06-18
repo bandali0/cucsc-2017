@@ -19,7 +19,7 @@
 \usepackage{ulem}
 
 %% Uncomment to restore \emph back to normal (instead of underlined)
-%% \normalem
+\normalem
 
 %% Type set covered text in a ``transparent'' way
 \setbeamercovered{transparent}
@@ -118,7 +118,12 @@
   both \emph{safety} and \emph{liveness} properties.
 \end{frame}
 
-\begin{frame}[fragile]{\unitb\ --- Logic}
+\begin{frame}{\unitb\ Logic}
+  \unitb Logic supports \emph{arithmetic}, \emph{sets}, \emph{functions},
+  \emph{relations}, and \emph{intervals} theories.
+\end{frame}
+
+\begin{frame}[fragile]{\unitb\ Logic \& Related Work}
   \setbeamertemplate{itemize/enumerate body begin}{\small}
   \begin{columns}[T,onlytextwidth]
     \column{0.5\textwidth}
@@ -140,15 +145,27 @@
         \end{itemize}
       \end{block}
   \end{columns}
-  \only<2>{\footnotetext[1]{limitation of the TLC tooling}}
+  \only<2->{\footnotetext[1]{limitation of the TLC tooling}}
+  \pause
+  \setbeamertemplate{itemize/enumerate body begin}{\small}
+  \begin{columns}[T,onlytextwidth]
+    \column{0.5\textwidth}
+
+      \begin{block}{\unitb vs Logitext}
+        \begin{itemize}
+        \item support for higher-order logic in both \emph{predicate}
+        and \emph{sequent} calculi
+        \end{itemize}
+      \end{block}
+  \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{\unitb Web}
   \textbf{\unitb Web} makes the Literate \unitb prover available on
   the web.\newline \pause
 
-  Literate Unit-B supports the Unit-B logic and Unit-B [computation]
-  models, whereas currently Unit-B Web only supports the Unit-B logic.
+  While Literate \unitb supports both the \unitb Logic and \unitb's computation
+  models, \unitb Web currently only supports \unitb Logic.
 \end{frame}
 
 \begin{frame}[fragile]{\unitb Web}
@@ -216,6 +233,7 @@
 \section{Type Checking}
 
 \begin{frame}<1-3>[fragile,label=typecheckingframe]{Type Checking}
+% \begin{frame}[fragile,label=typecheckingframe]{Type Checking}
   \begin{itemize}
   \item <1-> $\{x\}+3 \le 7$
   \item <2-> not meaningful
@@ -266,13 +284,23 @@
   \end{figure}
 \end{frame}
 
+% \begin{frame}[plain]
+%   \begin{center}
+%     {\Large Live Demo}
+
+%     \href{https://web.unitb.org}{\url{web.unitb.org}}
+    
+%   \end{center}
+% \end{frame}
+
 
 \section{Conclusion}
 
-\begin{frame}{Summary}
+\begin{frame}[label=summary]{Summary}
 
   \begin{itemize}[<+->]
-  \item \textbf{\unitb Web} brings the Literate Unit-B prover to the web.
+  \item \textbf{\unitb Web}, a web application for doing predicate calculus
+    proofs, bringing the Literate \unitb prover to the web.
   \item \textbf{Type Checking} helps identify a certain class of
     meaningless formulas (i.e. type-incorrect formulas) efficiently.
   \item \textbf{Well-definedness Checking} catches the rest of
@@ -281,9 +309,28 @@
 
 \end{frame}
 
+\begin{frame}[fragile]{Try \unitb Web}
+  \unitb Web is available under the MIT open source license. You can get the
+  source code from GitHub:
+
+  \begin{center}
+    \href{https://github.com/unitb/unitb-web}{\url{github.com/unitb/unitb-web}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Acknowledgements}
+  \large
+
+  Simon Hudon (PhD Candidate)
+
+  Professor Jonathan Ostroff
+\end{frame}
+
 \begin{frame}[standout]
   \LARGE Thanks!
 \end{frame}
+
+\againframe<3>{summary}
 
 \appendix
 
@@ -305,19 +352,19 @@
   \metroset{block=fill}
   \begin{block}{SameFields}
   \begin{align*}
-    \mathnormal{SameFields(fs, r0, r1)} & \triangleq \\
-    \mathnormal{(\forall x: x \in fs:\ }
-    & \mathnormal{(x \in dom.r0 \wedge x \in dom.r1 \wedge r0.x =
+    {SameFields(fs, r0, r1)} & \triangleq \\
+    {(\forall x: x \in fs:\ }
+    & {(x \in \textsf{dom}.r0 \wedge x \in \textsf{dom}.r1 \wedge r0.x =
       r1.x)}\\
-    \mathnormal{\vee} & \mathnormal{(\neg x \in dom.r0 \wedge \neg x
-      \in dom.r1))}
+    {\vee} & {(\neg x \in \textsf{dom}.r0 \wedge \neg x
+      \in \textsf{dom}.r1))}
   \end{align*}
   \end{block}
   \pause
 
   \begin{itemize}[<+->]
-  \item Given a set of strings ($\mathnormal{fs}$) and two records
-    ($\mathnormal{r0, r1}$), checks that all the specified fields have
+  \item Given a set of strings ($fs$) and two records
+    (${r0, r1}$), checks that all the specified fields have
     same value in both records.
   \item Works on any pair of records represented as partial functions.
   \end{itemize}
@@ -340,13 +387,14 @@
 \end{frame}
 
 \begin{frame}{Completeness}
+  \vspace{4ex}
   \begin{multicols}{2}
     \uncover<2->{The following calculation is not well-defined in
       \eventb, but it is perfectly so in \unitb:}
 
     \columnbreak
     \begin{eqnarray*}
-      \\[-8ex]
+      \\[-10ex]
       A \Rightarrow WD(B) \\
       B \Rightarrow WD(C) \\
       B \Rightarrow WD(D)
@@ -354,13 +402,13 @@
   \end{multicols}
 
   \uncover<3->{
-    \vspace{-2ex}
+    \vspace{-3ex}
     \begin{multicols}{2}
       \begin{align*}
         & A \wedge B \wedge (C \vee D) \\
-        = \ & \{ \textit{associativity} \} \\
+        = \ & \{ \emph{commutativity} \} \\
         & {\color{red} A \wedge (C \vee D) \wedge B} \\
-        = \ & \{ \textit{distributivity} \} \\
+        = \ & \{ \emph{distributivity} \} \\
         & ( (A \wedge C) \vee (A \wedge D) ) \wedge B
       \end{align*}
       \columnbreak\
@@ -380,7 +428,6 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]{References}
-  \normalem
   \bibliography{bib}
   \bibliographystyle{plain}
 \end{frame}
